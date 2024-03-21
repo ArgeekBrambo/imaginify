@@ -27,11 +27,13 @@ export async function getUserById(userId: string) {
     await connectToDatabase();
 
     const user = await User.findOne({ clerkId: userId });
+    // console.log(user, "user")
 
     if (!user) throw new Error("User not found");
 
     return JSON.parse(JSON.stringify(user));
   } catch (error) {
+    // console.log("masuk error");
     handleError(error);
   }
 }
@@ -82,7 +84,7 @@ export async function updateCredits(userId: string, creditFee: number) {
 
     const updatedUserCredits = await User.findOneAndUpdate(
       { _id: userId },
-      { $inc: { creditBalance: creditFee }},
+      { $inc: { creditBalance: creditFee }}, //increment the credit balance
       { new: true }
     )
 

@@ -88,7 +88,7 @@ declare type CreateUserParams = {
     createdAt: Date;
   };
   
-  declare type TransformationTypeKey =
+  declare type TransformationTypeKey = // Using | in the type definition allows for the creation of a type that can represent multiple possible values. In this case, TransformationTypeKey can only be one of the specified strings: "restore", "fill", "remove", "recolor", or "removeBackground". This is useful for ensuring type safety when working with specific sets of string values, such as transformation types in your case. It restricts the possible values that variables of this type can hold, providing clarity and preventing unintended values from being assigned. 
     | "restore"
     | "fill"
     | "remove"
